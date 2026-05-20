@@ -52,5 +52,18 @@ int main() {
     std::cout << "Status code: " << response.status_code << std::endl;
     std::cout << "Response body:" << std::endl;
     std::cout << response.text << std::endl;
+
+    if(response.status_code == 200){
+        nlohmann::json data = nlohmann::json::parse(response.text);
+        
+        std::string puuid = data["puuid"];
+
+        std::cout<< "PUUID: " << puuid << std::endl;
+    } else{
+        std::cout << "Request failed" << std::endl;
+    }
+
+    
+
     return 0;
 }
